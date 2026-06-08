@@ -729,3 +729,8 @@ ORDER BY e.relationship_type, source_name, target_name, ed.source_doc, ed.source
 This v1 design is an Oracle-native, memory-aware, parallel-extractor graph extraction system.
 
 WayFlow gives the pipeline a clear multi-agent structure and parallel extractor execution. Oracle AI Agent Memory gives the ontology continuity across documents. Oracle Database stores the operational data, vectors, chunks, and graph objects in one place. Oracle SQL Property Graph turns extracted triples into a queryable knowledge graph. Together, these pieces create a stronger foundation for GraphRAG agents than either vector retrieval or one-shot LLM extraction alone.
+
+
+## Disclaimer
+
+*The views expressed here are my own and do not necessarily reflect the views of Oracle.*
