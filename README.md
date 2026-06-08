@@ -491,11 +491,6 @@ Force a document to run again:
 FORCE_REPROCESS=1 .venv/bin/python -m runner graphrag_example.pdf
 ```
 
-### 5. Validate Python Syntax
-
-```bash
-.venv/bin/python -m compileall .
-```
 
 ## Running Example
 
