@@ -1,5 +1,7 @@
 # KG Extraction Multi-Agent Flow v1
 
+![KG Extraction Multi-Agent Flow v1 architecture](images/highlevel_kg.png)
+
 ## Goal
 
 This project builds a persistent knowledge graph from documents.
@@ -13,12 +15,14 @@ At a high level, the pipeline:
 5. Runs a configurable ensemble of extractor agents in parallel.
 6. Keeps only triples that pass consensus.
 7. Writes vertices, edges, chunks, embeddings, and provenance into Oracle Database.
-8. Stores ontology entries in Oracle AI Agent Memory so the ontology can expand as new documents are processed.
+8. Stores ontology entries in Oracle AI Agent Memory so the ontology can expand as new documents are processed, and used by agents exploiting the knowledge base.
 9. Exposes the result as an Oracle SQL Property Graph for enhanced GraphRAG and agentic retrieval.
 
 The design goal is not only to extract triples, but to make graph extraction more stable across runs and more useful across documents. LLM extraction is naturally variable; this system combines parallel extraction, deterministic consensus, persistent ontology memory, and Oracle-native graph storage to reduce drift and preserve decisions over time.
 
 This architecture is described as a **multi-agent flow**. The current implementation uses a deterministic WayFlow step graph with a parallel extractor ensemble. It does not rely on autonomous handoff routing or emergent agent collaboration.
+
+*Agents that will use the generated Knowledge Graph, will exploit the Oracle DB to navigate the Property Graph and get ontology info by Agent Memory.*
 
 ## Why These Technologies
 
