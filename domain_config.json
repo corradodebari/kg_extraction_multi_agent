@@ -1,0 +1,234 @@
+{
+  "default_domains": ["core"],
+  "auto_min_keyword_matches": 3,
+  "domains": {
+    "core": {
+      "description": "General knowledge-graph extraction domain.",
+      "keywords": [],
+      "vertex_types": [
+        {
+          "label": "person",
+          "description": "Individual human",
+          "naming_convention": "Full name, title case"
+        },
+        {
+          "label": "organization",
+          "description": "Company, institution, agency",
+          "naming_convention": "Official registered name, title case"
+        },
+        {
+          "label": "technology",
+          "description": "Software, hardware, protocol, standard",
+          "naming_convention": "Official product/technology name"
+        },
+        {
+          "label": "concept",
+          "description": "Abstract idea, methodology, theory",
+          "naming_convention": "Lowercase unless proper noun"
+        },
+        {
+          "label": "document",
+          "description": "Source document (provenance)",
+          "naming_convention": "Document title"
+        },
+        {
+          "label": "location",
+          "description": "Geographic entity",
+          "naming_convention": "Official geographic name"
+        },
+        {
+          "label": "event",
+          "description": "Conference, release, incident",
+          "naming_convention": "Event name, title case"
+        }
+      ],
+      "edge_types": [
+        {"label": "works_for", "source": "person", "target": "organization"},
+        {"label": "founded", "source": "person", "target": "organization"},
+        {"label": "subsidiary_of", "source": "organization", "target": "organization"},
+        {"label": "uses", "source": "organization", "target": "technology"},
+        {"label": "developed_by", "source": "technology", "target": "organization"},
+        {"label": "related_to", "source": "any", "target": "any"},
+        {"label": "located_in", "source": "organization", "target": "location"},
+        {"label": "participated_in", "source": "any", "target": "event"},
+        {"label": "mentioned_in", "source": "any", "target": "document"},
+        {"label": "implements", "source": "technology", "target": "concept"}
+      ]
+    },
+    "pharma": {
+      "description": "Pharma, biotech, clinical, manufacturing, and regulatory documents.",
+      "keywords": [
+        "adverse event",
+        "biotech",
+        "clinical trial",
+        "compound",
+        "drug",
+        "ema",
+        "fda",
+        "manufacturing",
+        "pharma",
+        "pharmaceutical",
+        "recall",
+        "regulatory",
+        "submission",
+        "therapy",
+        "trial"
+      ],
+      "vertex_types": [
+        {
+          "label": "drug",
+          "description": "Therapeutic drug or compound",
+          "naming_convention": "Official drug or compound name"
+        },
+        {
+          "label": "drug_program",
+          "description": "Drug development program",
+          "naming_convention": "Program name or code from source text"
+        },
+        {
+          "label": "clinical_trial",
+          "description": "Clinical trial or study",
+          "naming_convention": "Trial identifier or official study name"
+        },
+        {
+          "label": "regulatory_agency",
+          "description": "Regulatory authority",
+          "naming_convention": "Official agency name or acronym"
+        },
+        {
+          "label": "manufacturing_facility",
+          "description": "Manufacturing plant, site, or facility",
+          "naming_convention": "Facility name from source text"
+        },
+        {
+          "label": "regulatory_submission",
+          "description": "Regulatory filing, dossier, or submission",
+          "naming_convention": "Submission identifier or descriptive name"
+        },
+        {
+          "label": "adverse_event",
+          "description": "Safety or adverse event",
+          "naming_convention": "Clinical event name from source text"
+        },
+        {
+          "label": "recall",
+          "description": "Product recall or recall event",
+          "naming_convention": "Recall event name or product plus date"
+        },
+        {
+          "label": "therapy_area",
+          "description": "Disease or therapeutic area",
+          "naming_convention": "Standard condition or therapy-area name"
+        }
+      ],
+      "edge_types": [
+        {"label": "manufactured_at", "source": "drug", "target": "manufacturing_facility"},
+        {"label": "submitted_to", "source": "regulatory_submission", "target": "regulatory_agency"},
+        {"label": "approved_by", "source": "drug", "target": "regulatory_agency"},
+        {"label": "tested_in", "source": "drug", "target": "clinical_trial"},
+        {"label": "sponsored_by", "source": "clinical_trial", "target": "organization"},
+        {"label": "targets_condition", "source": "drug", "target": "therapy_area"},
+        {"label": "caused_adverse_event", "source": "drug", "target": "adverse_event"},
+        {"label": "recalled_due_to", "source": "drug", "target": "recall"},
+        {"label": "located_in", "source": "manufacturing_facility", "target": "location"},
+        {"label": "produced_at", "source": "any", "target": "manufacturing_facility"},
+        {"label": "managed_by", "source": "any", "target": "organization"}
+      ]
+    },
+    "finance": {
+      "description": "Financial reports, accounting statements, filings, investment documents, and credit materials.",
+      "keywords": [
+        "10-k",
+        "10-q",
+        "annual report",
+        "assets",
+        "balance sheet",
+        "bond",
+        "cash flow",
+        "credit",
+        "debt",
+        "ebitda",
+        "equity",
+        "financial statement",
+        "fiscal year",
+        "income statement",
+        "interest rate",
+        "investment",
+        "liabilities",
+        "loan",
+        "net income",
+        "portfolio",
+        "revenue",
+        "sec filing",
+        "securities",
+        "shareholder"
+      ],
+      "vertex_types": [
+        {
+          "label": "financial_metric",
+          "description": "Quantitative business or accounting metric such as revenue, EBITDA, margin, or net income",
+          "naming_convention": "Metric name from source text"
+        },
+        {
+          "label": "financial_statement",
+          "description": "Named financial statement or report section",
+          "naming_convention": "Official statement name, title case"
+        },
+        {
+          "label": "reporting_period",
+          "description": "Fiscal quarter, fiscal year, or other reporting period",
+          "naming_convention": "Period label from source text, for example FY2025 or Q3 2025"
+        },
+        {
+          "label": "account",
+          "description": "Accounting line item or account such as cash, receivables, liabilities, or equity",
+          "naming_convention": "Account or line-item name from source text"
+        },
+        {
+          "label": "currency",
+          "description": "Currency or monetary unit",
+          "naming_convention": "ISO currency code or source-text currency name"
+        },
+        {
+          "label": "security",
+          "description": "Tradable security such as stock, bond, note, or fund share",
+          "naming_convention": "Ticker, ISIN, CUSIP, or official security name"
+        },
+        {
+          "label": "financial_instrument",
+          "description": "Financial contract or instrument such as loan, derivative, facility, or credit line",
+          "naming_convention": "Instrument name or description from source text"
+        },
+        {
+          "label": "transaction",
+          "description": "Financial transaction, acquisition, issuance, repayment, or transfer",
+          "naming_convention": "Transaction name or concise source-text description"
+        },
+        {
+          "label": "regulatory_filing",
+          "description": "Financial or securities regulatory filing",
+          "naming_convention": "Filing type and period, for example Form 10-K FY2025"
+        },
+        {
+          "label": "risk_factor",
+          "description": "Financial, market, credit, liquidity, or operational risk factor",
+          "naming_convention": "Risk factor name from source text"
+        }
+      ],
+      "edge_types": [
+        {"label": "reports_metric", "source": "organization", "target": "financial_metric"},
+        {"label": "reported_for_period", "source": "financial_metric", "target": "reporting_period"},
+        {"label": "appears_in_statement", "source": "financial_metric", "target": "financial_statement"},
+        {"label": "denominated_in", "source": "any", "target": "currency"},
+        {"label": "contains_account", "source": "financial_statement", "target": "account"},
+        {"label": "files_report", "source": "organization", "target": "regulatory_filing"},
+        {"label": "filed_with", "source": "regulatory_filing", "target": "organization"},
+        {"label": "issues_security", "source": "organization", "target": "security"},
+        {"label": "holds_security", "source": "organization", "target": "security"},
+        {"label": "uses_instrument", "source": "organization", "target": "financial_instrument"},
+        {"label": "finances_transaction", "source": "financial_instrument", "target": "transaction"},
+        {"label": "exposes_risk", "source": "organization", "target": "risk_factor"}
+      ]
+    }
+  }
+}

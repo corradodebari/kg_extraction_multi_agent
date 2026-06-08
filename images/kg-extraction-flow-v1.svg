@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1260" viewBox="0 0 1600 1260" role="img" aria-labelledby="title desc">
+  <title id="title">KG Extraction Multi-Agent Flow v1 architecture</title>
+  <desc id="desc">Flowchart showing a deterministic WayFlow multi-agent flow with document parsing, domain detection, ontology loading, parallel extractor agents, consensus, cumulative graph writing, provenance storage, Oracle Agent Memory, Oracle Database, SQL Property Graph, and enhanced RAG agent.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#455a64"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#1b5e8a"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#2e7d32"/>
+    </marker>
+    <style>
+      .bg { fill: #f6f8fb; }
+      .title { font: 700 30px Arial, Helvetica, sans-serif; fill: #152238; }
+      .subtitle { font: 400 15px Arial, Helvetica, sans-serif; fill: #52616b; }
+      .node-title { font: 700 17px Arial, Helvetica, sans-serif; fill: #17212b; }
+      .node-sub { font: 400 14px Arial, Helvetica, sans-serif; fill: #40515e; }
+      .small { font: 400 12px Arial, Helvetica, sans-serif; fill: #60717d; }
+      .agent { fill: #ffffff; stroke: #2d6cdf; stroke-width: 2.2; }
+      .extractor { fill: #fffaf0; stroke: #d17a00; stroke-width: 2.2; }
+      .memory { fill: #f3eefc; stroke: #7353ba; stroke-width: 2.2; }
+      .config { fill: #eef8f2; stroke: #2e7d32; stroke-width: 2.2; }
+      .db { fill: #eef6ff; stroke: #1b5e8a; stroke-width: 2.2; }
+      .rag { fill: #fff3f3; stroke: #ba3f3f; stroke-width: 2.2; }
+      .shadow { filter: drop-shadow(0 8px 14px rgba(28, 45, 61, 0.12)); }
+      .arrow { fill: none; stroke: #455a64; stroke-width: 1.4; marker-end: url(#arrow); }
+      .arrow-blue { fill: none; stroke: #1b5e8a; stroke-width: 1.4; marker-end: url(#arrow-blue); }
+      .arrow-green { fill: none; stroke: #2e7d32; stroke-width: 1.4; marker-end: url(#arrow-green); }
+      .arrow-dashed { fill: none; stroke: #6a7d89; stroke-width: 1.4; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+      .lane { fill: #ffffff; stroke: #d8e0e7; stroke-width: 1.4; }
+      .lane-label { font: 700 13px Arial, Helvetica, sans-serif; fill: #647582; letter-spacing: 0.5px; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1260"/>
+  <text class="title" x="60" y="56">KG Extraction Multi-Agent Flow v1</text>
+  <text class="subtitle" x="60" y="82">Deterministic WayFlow steps, parallel extractor ensemble, Oracle AI Agent Memory, Oracle SQL Property Graph</text>
+
+  <rect class="lane" x="55" y="120" width="1180" height="805" rx="18"/>
+  <text class="lane-label" x="82" y="148">WAYFLOW AGENT STEP FLOW</text>
+  <rect class="lane" x="1260" y="120" width="280" height="805" rx="18"/>
+  <text class="lane-label" x="1286" y="148">ORACLE MEMORY + GRAPH</text>
+  <rect class="lane" x="835" y="955" width="700" height="260" rx="18"/>
+  <text class="lane-label" x="862" y="983">ORACLE DATABASE OBJECTS</text>
+
+  <!-- Main pipeline nodes -->
+  <g class="shadow">
+    <rect class="agent" x="500" y="130" width="300" height="64" rx="10"/>
+    <text class="node-title" x="650" y="157" text-anchor="middle">Input document</text>
+    <text class="node-sub" x="650" y="179" text-anchor="middle">PDF, DOCX, HTML, Markdown</text>
+
+    <rect class="agent" x="500" y="225" width="300" height="76" rx="10"/>
+    <text class="node-title" x="650" y="254" text-anchor="middle">ParserAgent</text>
+    <text class="node-sub" x="650" y="277" text-anchor="middle">Docling parse + chunk cache</text>
+
+    <rect class="agent" x="500" y="332" width="300" height="76" rx="10"/>
+    <text class="node-title" x="650" y="361" text-anchor="middle">DocumentTypeAgent</text>
+    <text class="node-sub" x="650" y="384" text-anchor="middle">domain detection</text>
+
+    <rect class="agent" x="500" y="439" width="300" height="82" rx="10"/>
+    <text class="node-title" x="650" y="468" text-anchor="middle">OntologyAgent</text>
+    <text class="node-sub" x="650" y="491" text-anchor="middle">domain config +</text>
+    <text class="node-sub" x="650" y="511" text-anchor="middle">Agent Memory ontology</text>
+
+    <rect class="agent" x="500" y="555" width="300" height="82" rx="10"/>
+    <text class="node-title" x="650" y="584" text-anchor="middle">ParallelExtractorAgents</text>
+    <text class="node-sub" x="650" y="607" text-anchor="middle">N WayFlow sub-flows</text>
+
+    <rect class="agent" x="500" y="765" width="300" height="76" rx="10"/>
+    <text class="node-title" x="650" y="794" text-anchor="middle">OntologyAdmitTask</text>
+    <text class="node-sub" x="650" y="817" text-anchor="middle">auto-admit repeated types</text>
+
+    <rect class="agent" x="500" y="872" width="300" height="82" rx="10"/>
+    <text class="node-title" x="650" y="901" text-anchor="middle">ConsensusMergerTask</text>
+    <text class="node-sub" x="650" y="924" text-anchor="middle">agreement threshold +</text>
+    <text class="node-sub" x="650" y="944" text-anchor="middle">fuzzy entity matching</text>
+
+    <rect class="agent" x="500" y="990" width="300" height="82" rx="10"/>
+    <text class="node-title" x="650" y="1019" text-anchor="middle">GraphWriterTask</text>
+    <text class="node-sub" x="650" y="1042" text-anchor="middle">MERGE graph +</text>
+    <text class="node-sub" x="650" y="1062" text-anchor="middle">provenance + chunks</text>
+  </g>
+
+  <!-- Extractor fan-out row -->
+  <g class="shadow">
+    <rect class="extractor" x="105" y="665" width="250" height="76" rx="10"/>
+    <text class="node-title" x="230" y="694" text-anchor="middle">Extractor1Agent</text>
+    <text class="node-sub" x="230" y="717" text-anchor="middle">model + temp + angle</text>
+
+    <rect class="extractor" x="405" y="665" width="250" height="76" rx="10"/>
+    <text class="node-title" x="530" y="694" text-anchor="middle">Extractor2Agent</text>
+    <text class="node-sub" x="530" y="717" text-anchor="middle">model + temp + angle</text>
+
+    <rect class="extractor" x="705" y="665" width="250" height="76" rx="10"/>
+    <text class="node-title" x="830" y="694" text-anchor="middle">Extractor3Agent</text>
+    <text class="node-sub" x="830" y="717" text-anchor="middle">model + temp + angle</text>
+
+    <rect class="extractor" x="1005" y="665" width="250" height="76" rx="10"/>
+    <text class="node-title" x="1130" y="694" text-anchor="middle">ExtractorNAgent</text>
+    <text class="node-sub" x="1130" y="717" text-anchor="middle">configurable</text>
+  </g>
+
+  <!-- Side inputs and memory -->
+  <g class="shadow">
+    <rect class="config" x="105" y="325" width="285" height="92" rx="10"/>
+    <text class="node-title" x="247.5" y="357" text-anchor="middle">domain_config.json</text>
+    <text class="node-sub" x="247.5" y="380" text-anchor="middle">core/pharma/finance</text>
+    <text class="node-sub" x="247.5" y="400" text-anchor="middle">ontology + keywords</text>
+
+    <rect class="memory" x="1280" y="345" width="240" height="92" rx="10"/>
+    <text class="node-title" x="1400" y="377" text-anchor="middle">Oracle AI</text>
+    <text class="node-title" x="1400" y="399" text-anchor="middle">Agent Memory</text>
+    <text class="node-sub" x="1400" y="421" text-anchor="middle">ontology entries</text>
+  </g>
+
+  <!-- Oracle DB and graph nodes -->
+  <g class="shadow">
+    <path class="db" d="M 1055 1000 C 1055 982 1265 982 1265 1000 L 1265 1080 C 1265 1098 1055 1098 1055 1080 Z"/>
+    <ellipse class="db" cx="1160" cy="1000" rx="105" ry="18"/>
+    <text class="node-title" x="1160" y="1034" text-anchor="middle">Oracle Database</text>
+    <text class="node-sub" x="1160" y="1057" text-anchor="middle">tables, provenance, vectors</text>
+
+    <rect class="db" x="850" y="1088" width="170" height="48" rx="9"/>
+    <text class="node-title" x="935" y="1119" text-anchor="middle">KG_VERTEX_DOC</text>
+
+    <rect class="db" x="1035" y="1088" width="160" height="48" rx="9"/>
+    <text class="node-title" x="1115" y="1119" text-anchor="middle">KG_EDGE_DOC</text>
+
+    <rect class="db" x="850" y="1150" width="150" height="48" rx="9"/>
+    <text class="node-title" x="925" y="1181" text-anchor="middle">KG_VERTEX</text>
+
+    <rect class="db" x="1030" y="1150" width="150" height="48" rx="9"/>
+    <text class="node-title" x="1105" y="1181" text-anchor="middle">KG_EDGE</text>
+
+    <rect class="db" x="1210" y="1150" width="150" height="48" rx="9"/>
+    <text class="node-title" x="1285" y="1181" text-anchor="middle">KG_CHUNK</text>
+
+    <rect class="db" x="1380" y="990" width="190" height="66" rx="9"/>
+    <text class="node-title" x="1475" y="1018" text-anchor="middle">Typed materialized</text>
+    <text class="node-title" x="1475" y="1041" text-anchor="middle">views</text>
+
+    <rect class="db" x="1340" y="1085" width="230" height="60" rx="9"/>
+    <text class="node-title" x="1455" y="1110" text-anchor="middle">Oracle SQL</text>
+    <text class="node-title" x="1455" y="1132" text-anchor="middle">Property Graph</text>
+
+    <rect class="rag" x="1350" y="1165" width="220" height="58" rx="9"/>
+    <text class="node-title" x="1460" y="1189" text-anchor="middle">Enhanced</text>
+    <text class="node-title" x="1460" y="1211" text-anchor="middle">RAG agent</text>
+  </g>
+
+  <!-- Main vertical arrows -->
+  <path class="arrow" d="M 650 194 L 650 225"/>
+  <path class="arrow" d="M 650 301 L 650 332"/>
+  <path class="arrow" d="M 650 408 L 650 439"/>
+  <path class="arrow" d="M 650 521 L 650 555"/>
+
+  <!-- Fan out to extractors -->
+  <path class="arrow" d="M 650 637 C 650 650 230 650 230 665"/>
+  <path class="arrow" d="M 650 637 C 650 650 530 650 530 665"/>
+  <path class="arrow" d="M 650 637 C 650 650 830 650 830 665"/>
+  <path class="arrow-dashed" d="M 650 637 C 650 650 1130 650 1130 665"/>
+  <text class="small" x="1044" y="646" text-anchor="middle">configurable</text>
+
+  <!-- Fan in to ontology admit -->
+  <path class="arrow" d="M 230 741 C 230 758 650 748 650 765"/>
+  <path class="arrow" d="M 530 741 C 530 758 650 748 650 765"/>
+  <path class="arrow" d="M 830 741 C 830 758 650 748 650 765"/>
+  <path class="arrow" d="M 1130 741 C 1130 758 650 748 650 765"/>
+
+  <!-- Remaining pipeline -->
+  <path class="arrow" d="M 650 841 L 650 872"/>
+  <path class="arrow" d="M 650 954 L 650 990"/>
+
+  <!-- Config input arrows -->
+  <path class="arrow-green" d="M 390 360 L 500 360"/>
+  <path class="arrow-green" d="M 390 395 C 435 430 455 480 500 480"/>
+
+  <!-- Memory arrows -->
+  <path class="arrow" d="M 1280 390 C 1120 390 960 480 800 480"/>
+  <path class="arrow-dashed" d="M 800 803 C 1010 803 1100 435 1280 415"/>
+
+  <!-- Writer to database -->
+  <path class="arrow-blue" d="M 800 1031 L 1055 1031"/>
+
+  <!-- DB to objects -->
+  <path class="arrow-blue" d="M 1085 1080 L 1005 1088"/>
+  <path class="arrow-blue" d="M 1140 1085 L 1115 1088"/>
+  <path class="arrow-blue" d="M 1120 1084 C 1120 1125 925 1120 925 1150"/>
+  <path class="arrow-blue" d="M 1150 1085 L 1105 1150"/>
+  <path class="arrow-blue" d="M 1190 1085 L 1285 1150"/>
+  <path class="arrow-blue" d="M 1265 1025 L 1380 1025"/>
+  <path class="arrow-blue" d="M 1475 1056 L 1455 1085"/>
+  <path class="arrow-blue" d="M 1455 1145 L 1455 1165"/>
+  <path class="arrow-blue" d="M 1360 1174 L 1350 1174"/>
+  <path class="arrow-blue" d="M 1285 1198 C 1285 1210 1350 1210 1350 1204"/>
+</svg>

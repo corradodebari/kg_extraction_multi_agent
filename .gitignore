@@ -1,0 +1,6 @@
+.env
+graphrag_acme_pharma.pdf
+graphrag_example.pdf
+__pycache__/
+
+cache/

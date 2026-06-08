@@ -1,0 +1,17 @@
+# KG Extraction Pipeline — dependencies
+
+# Oracle
+oracledb>=2.5.0
+oracleagentmemory>=26.4.0
+
+# WayFlow
+wayflowcore==26.1.1
+
+# OpenAI
+openai>=1.40.0
+
+# Document parsing
+docling>=2.0.0
+
+# Numeric
+numpy>=1.24.0
