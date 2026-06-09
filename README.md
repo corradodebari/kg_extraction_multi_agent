@@ -403,7 +403,7 @@ The total vote count is derived from `EXTRACTOR_COUNT`.
 From this directory, create and activate the env:
 
 ```bash
-python3 -m venv .venv
+python -m venv .venv
 .venv/bin/python -m pip install --upgrade pip
 .venv/bin/python -m pip install -r requirements.txt
 
